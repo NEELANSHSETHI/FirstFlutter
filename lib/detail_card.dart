@@ -38,19 +38,24 @@ class _CardDetailState extends State<DetailsCard> {
         child: CardWidget(cardNames));
   }
 
-  getData() async {
+  Future<String> getData() async {
     http.Response response = await http.get(
         Uri.encodeFull("https://jsonplaceholder.typicode.com/posts"),
         headers: {"Accept": "application/json"});
     List apidata = jsonDecode(response.body);
     print(apidata[0]["title"]);
 
-    for (int i = 0; i < apidata.length; i++) {
-      cardNames.add(apidata[0]["title"]);
-    }
+
+
+
     print(cardNames);
     setState(() {
       print("in set state");
     });
+
+    for (int i = 0; i < apidata.length; i++) {
+      cardNames.add(apidata[0]["title"]);
+    }
+
   }
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 class CardWidget extends StatelessWidget {
   final List<String> cardNames; //only set from outside
@@ -10,6 +9,7 @@ class CardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return ListView.builder(
+        physics: BouncingScrollPhysics(),
         itemCount: cardNames.length,
         itemBuilder: (BuildContext context, int i) {
           return Column(
